@@ -105,41 +105,11 @@ public class UAEArabicPaypalClass {
 		}
 
 		try {			
-			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[5]/a/span")).click();
-		
-			
-			Boolean cartpresent = driver.findElements(By.xpath("//*[@id='category-products-grid']/ol/li[1]/div/div[2]/div[3]/div/div/a/button")).size() < 0;
-			
-			if(cartpresent == false) {
-			
-			
-			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[1]/div/div[2]/a/strong[1]")).click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span")).click();
+			driver.findElement(By.cssSelector(".action.tocart.primary.show-tooltip")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			driver.findElement(By.xpath("//*[@id='product-addtocart-button']")).click();
-			}
-			else {
-				driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[5]/a/span")).click();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[3]/div/div[2]/a/strong[1]")).click();
-				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-				Thread.sleep(3000);
-				driver.findElement(By.xpath("//*[@id='product-addtocart-button']")).click();
-				
-			}
-			/*int a;
-			int z = 5;
-			for (a = 1; a == 2; a++) {
-				String view = "//*[@id='category-products-grid']/ol/li[" + a
-						+ "]/div/div[2]/div[3]/div/div/form/button";
-
-				driver.findElement(By.xpath(view)).click();
-			}
-*/
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(3000);
-			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]/span[1]"))
+			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
 					.click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(8000);
