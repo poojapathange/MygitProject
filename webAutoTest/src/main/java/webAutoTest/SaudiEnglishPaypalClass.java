@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Mave
 Target - To verify all sites are up
 */
 
-public class SAudiEnglishCODClass {
+public class SaudiEnglishPaypalClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -77,7 +77,7 @@ public class SAudiEnglishCODClass {
 		driver.get("https://en-sa.citrusstv.com/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = SAudiEnglishCODClass.SaudiEnglishCOD(driver);
+		String EnglishMenu = SaudiEnglishPaypalClass.SaudiEnglishPaypal(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -86,7 +86,7 @@ public class SAudiEnglishCODClass {
 	}
 
 	@Test
-	public static String SaudiEnglishCOD(WebDriver driver) throws InterruptedException {
+	public static String SaudiEnglishPaypal(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
@@ -107,7 +107,7 @@ public class SAudiEnglishCODClass {
 		try {
 			// English Saudi cash on delivery
 
-			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span")).click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			/*int a;
@@ -271,17 +271,16 @@ public class SAudiEnglishCODClass {
 				e.printStackTrace();
 
 			}
+		
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
-			driver.findElement(By.xpath("//*[@id='cashondelivery']")).click();
+			driver.findElement(By.xpath("//*[@id='paypal_express']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[1]/div[2]/div[4]/div/button")).click();
-			String ordernumber = driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div/div[3]/p[1]/a/strong"))
-					.getText();
-			System.out.println("Saudi English Cash On delivery order id" + " " + ordernumber);
 
+			// driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[3]/div[2]/div[3]/div/button")).click();
+			System.out.println(" UAE Arabic paypal payment order placed sucessfully");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
@@ -315,7 +314,7 @@ public class SAudiEnglishCODClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = SAudiEnglishCODClass.getScreenhot(driver, result.getName());
+			String screenshotPath = SaudiEnglishPaypalClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");

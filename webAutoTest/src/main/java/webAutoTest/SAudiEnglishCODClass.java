@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Mave
 Target - To verify all sites are up
 */
 
-public class UAEArabicCODClass {
+public class SAudiEnglishCODClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -74,10 +74,10 @@ public class UAEArabicCODClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://ar-ae.citrusstv.com");
+		driver.get("https://en-sa.citrusstv.com/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = UAEArabicCODClass.CashOnDeliveryUAE(driver);
+		String EnglishMenu = SAudiEnglishCODClass.SaudiEnglishCOD(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -86,7 +86,7 @@ public class UAEArabicCODClass {
 	}
 
 	@Test
-	public static String CashOnDeliveryUAE(WebDriver driver) throws InterruptedException {
+	public static String SaudiEnglishCOD(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
@@ -105,22 +105,20 @@ public class UAEArabicCODClass {
 		}
 
 		try {
-			// english UAE cash on delivery
+			// English Saudi cash on delivery
 
-			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span"))
-					.click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			int a;
+			/*int a;
 			int z = 5;
 			for (a = 1; a <= 1; a++) {
-				String view = "//*[@id='category-products-grid']/ol/li[" + a
-						+ "]/div/div[2]/div[3]/div/div/form/button";
+				String view = "//*[@id='category-products-grid']/ol/li[1]/div/div[2]/div[3]/div/div/form/button";
 
 				driver.findElement(By.xpath(view)).click();
 			}
-
+*/  
+			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[1]/div/div[2]/div[3]/div/div/form/button")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -148,8 +146,9 @@ public class UAEArabicCODClass {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
 				// System.out.println("address selected properly" +isPresent);
-
-				if (isPresent == false) {
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				Thread.sleep(3000);
+				if (isPresent == true) {
 					driver.findElement(By.xpath("//*[@id='shipping-method-buttons-container']/div/button")).click();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(5000);
@@ -159,15 +158,14 @@ public class UAEArabicCODClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == false) {
+					if (isverified == true) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
 				} else {
-					String shippingText = driver
-							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
-
-					if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
+					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
+					
+					if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -192,7 +190,7 @@ public class UAEArabicCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
+					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -217,7 +215,7 @@ public class UAEArabicCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
+					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -241,7 +239,7 @@ public class UAEArabicCODClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
+					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -273,18 +271,16 @@ public class UAEArabicCODClass {
 				e.printStackTrace();
 
 			}
-
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
 			driver.findElement(By.xpath("//*[@id='cashondelivery']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[1]/div[2]/div[4]/div/button"))
-					.click();
+			driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[1]/div[2]/div[4]/div/button")).click();
 			String ordernumber = driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div/div[3]/p[1]/a/strong"))
 					.getText();
-			System.out.println("UAE Arabic Cash On delivery order id" + " " + ordernumber);
+			System.out.println("Saudi English Cash On delivery order id" + " " + ordernumber);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -319,7 +315,7 @@ public class UAEArabicCODClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = UAEArabicCODClass.getScreenhot(driver, result.getName());
+			String screenshotPath = SAudiEnglishCODClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");

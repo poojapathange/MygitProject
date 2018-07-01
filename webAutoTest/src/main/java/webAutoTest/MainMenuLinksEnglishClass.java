@@ -1,7 +1,6 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
-import java.sql.Driver;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
@@ -22,11 +21,11 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 /*Author :Pooja ps
-created date :3-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
+created date :10-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
 Target - To verify all sites are up
 */
 
-public class AllStoresareUPArabicClass {
+public class MainMenuLinksEnglishClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -68,88 +67,57 @@ public class AllStoresareUPArabicClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://ar-ae.citrusstv.com");
+		driver.get("https://en-ae.citrusstv.com");
 
-		String EnglishMenu = AllStoresareUPArabicClass.verifyArabic(driver);
+		String EnglishMenu = MainMenuLinksEnglishClass.englishlinks(driver);
 		if (EnglishMenu.equals("fail")) {
-			Assert.assertEquals(EnglishMenu, "verifying Arabic Main Stores are up");
+			Assert.assertEquals(EnglishMenu, "verifying English Main Menu links are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
 		}
 
 	}
 
 	@Test
-	public static String verifyArabic(WebDriver driver) throws InterruptedException {
-
+	public static String englishlinks(WebDriver driver) throws InterruptedException {
+		Thread.sleep(4000);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		try {
-
-			driver.findElement(By.xpath("//*[@id='ctv-website-switcher-trigger']/span")).click();
+			Thread.sleep(9000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(8000);
-			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[2]/div/div/a/img[1]")).click();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(6000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div[1]/div/div[3]/div[1]/div[4]/a/img")).click();
-			Thread.sleep(3000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("html/body/div[3]/div[1]/div/ul/li[1]/a")).click();
-			Thread.sleep(2000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			System.out.println("Verified all sites are up for UAE Arabic");
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "fail";
-		}
-
-		try {
-
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span"))
+					.click();
 			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='ctv-website-switcher-trigger']/span")).click();
-			Thread.sleep(2000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[2]/a/span"))
+					.click();
+			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			// String countryArb2 =
-			// driver.findElement(By.xpath("//*[@id='ui-id-1']/li[2]/a")).getText();
-			driver.findElement(By.xpath("//*[@id='ui-id-1']/li[2]/a")).click();
-			Thread.sleep(5000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[3]/a/span"))
+					.click();
+			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div[1]/div/div[3]/div/div[3]/a/img")).click();
-			Thread.sleep(3000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span"))
+					.click();
+			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("html/body/div[3]/div[1]/div/ul/li[1]/a")).click();
-			Thread.sleep(3000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[5]/a/span"))
+					.click();
+			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			System.out.println("Verified all sites are up for Saudi Arabic");
-
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			return "fail";
-		}
-
-		try {
-
-			Thread.sleep(3000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span"))
+					.click();
+			Thread.sleep(4000);
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='ctv-website-switcher-trigger']/span")).click();
-			Thread.sleep(2000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			// String countryArb3 =
-			// driver.findElement(By.xpath("//*[@id='ui-id-1']/li[3]/a")).getText();
-			driver.findElement(By.xpath("//*[@id='ui-id-1']/li[3]/a")).click();
-			Thread.sleep(5000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div[1]/div/div[3]/div/div[4]/a/img")).click();
-			Thread.sleep(3000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("html/body/div[3]/div[1]/div/ul/li[1]/a")).click();
-			Thread.sleep(3000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			System.out.println("Verified all sites are up for international Arabic");
-			driver.manage().timeouts().implicitlyWait(50, TimeUnit.SECONDS);
-			Thread.sleep(12000);
+			driver.findElement(By.xpath(
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[7]/a/span"))
+					.click();
+			System.out.println("Verified All Main Menu Links Are Working For English");
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -158,6 +126,7 @@ public class AllStoresareUPArabicClass {
 
 		return "sucess";
 	}
+
 	/*
 	 * @Test public void skipTest(){ logger = extent.startTest("skipTest"); throw
 	 * new SkipException("Skipping - This is not ready for testing "); }
@@ -169,7 +138,7 @@ public class AllStoresareUPArabicClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = AllStoresareUPArabicClass.getScreenhot(driver, result.getName());
+			String screenshotPath = MainMenuLinksEnglishClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");
@@ -186,7 +155,7 @@ public class AllStoresareUPArabicClass {
 	public void endReport() {
 		extent.flush();
 		extent.close();
-		driver.quit();
+		driver.close();
 	}
 
 }

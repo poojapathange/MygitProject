@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -18,7 +18,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -28,11 +27,11 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 /*Author :Pooja ps
-created date :17-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
+created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
 Target - To verify all sites are up
 */
 
-public class UAEnglishPaypalClass {
+public class SaudiEnglishCreditCardClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -75,10 +74,10 @@ public class UAEnglishPaypalClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://en-ae.citrusstv.com");
+		driver.get("https://en-sa.citrusstv.com/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = UAEnglishPaypalClass.CashOnDeliveryUAE(driver);
+		String EnglishMenu = SaudiEnglishCreditCardClass.SaudiEnglishCreditCard(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -87,12 +86,12 @@ public class UAEnglishPaypalClass {
 	}
 
 	@Test
-	public static String CashOnDeliveryUAE(WebDriver driver) throws InterruptedException {
+	public static String SaudiEnglishCreditCard(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
 			List<WebElement> imagesList = driver.findElements(By.tagName("img"));
-			// System.out.println("Total no. of images are " + imagesList.size());
+			//System.out.println("Total no. of images are " + imagesList.size());
 			for (WebElement imgElement : imagesList) {
 				if (imgElement != null) {
 					verifyimageActive(imgElement);
@@ -106,22 +105,20 @@ public class UAEnglishPaypalClass {
 		}
 
 		try {
-			// english UAE Paypal
+			// English Saudi cash on delivery
 
-			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[2]/a/span"))
-					.click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[2]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			int a;
+			/*int a;
 			int z = 5;
 			for (a = 1; a <= 1; a++) {
-				String view = "//*[@id='category-products-grid']/ol/li[" + a
-						+ "]/div/div[2]/div[3]/div/div/form/button";
+				String view = "//*[@id='category-products-grid']/ol/li[1]/div/div[2]/div[3]/div/div/form/button";
 
 				driver.findElement(By.xpath(view)).click();
 			}
-
+*/  
+			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[1]/div/div[2]/div[3]/div/div/form/button")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -149,8 +146,9 @@ public class UAEnglishPaypalClass {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
 				// System.out.println("address selected properly" +isPresent);
-
-				if (isPresent == false) {
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				Thread.sleep(3000);
+				if (isPresent == true) {
 					driver.findElement(By.xpath("//*[@id='shipping-method-buttons-container']/div/button")).click();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(5000);
@@ -160,14 +158,13 @@ public class UAEnglishPaypalClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == false) {
+					if (isverified == true) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
 				} else {
-					String shippingText = driver
-							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
-
+					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
+					
 					if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
 								.click();
@@ -274,16 +271,30 @@ public class UAEnglishPaypalClass {
 				e.printStackTrace();
 
 			}
-
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
-			driver.findElement(By.xpath("//*[@id='paypal_express']")).click();
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(3000);
+			Thread.sleep(4000);
 
-			// driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[3]/div[2]/div[3]/div/button")).click();
-			System.out.println(" UAE English paypal payment order placed sucessfully");
-
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_number']")).sendKeys("5424180279791732");
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_holder_name']")).sendKeys("citruss website test");
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration']")).click();
+			driver.findElement(By.xpath(
+					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[1]/div/select/option[12]"))
+					.click();
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration_yr']")).click();
+			driver.findElement(By.xpath(
+					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[2]/div/select/option[9]"))
+					.click();
+			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_cid']")).sendKeys("123");
+			driver.findElement(
+					By.xpath("//*[@id='checkout-payment-method-load']/div/div[2]/div[2]/div[2]/div/div/button"))
+					.click();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Thread.sleep(10000);
+			System.out.println("Saudi English credit card payment order placed sucessfully");
+			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);
@@ -317,7 +328,7 @@ public class UAEnglishPaypalClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = UAEnglishPaypalClass.getScreenhot(driver, result.getName());
+			String screenshotPath = SaudiEnglishCreditCardClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");

@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -27,11 +27,11 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 /*Author :Pooja ps
-created date :11-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
+created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
 Target - To verify all sites are up
 */
 
-public class UAEnglishCODClass {
+public class UAEArabicPaypalClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -74,10 +74,10 @@ public class UAEnglishCODClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://en-ae.citrusstv.com");
+		driver.get("https://ar-ae.citrusstv.com");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = UAEnglishCODClass.CashOnDeliveryUAE(driver);
+		String EnglishMenu = UAEArabicPaypalClass.UAEArabicPaypal(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -86,12 +86,12 @@ public class UAEnglishCODClass {
 	}
 
 	@Test
-	public static String CashOnDeliveryUAE(WebDriver driver) throws InterruptedException {
+	public static String UAEArabicPaypal(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
 			List<WebElement> imagesList = driver.findElements(By.tagName("img"));
-			//System.out.println("Total no. of images are " + imagesList.size());
+			// System.out.println("Total no. of images are " + imagesList.size());
 			for (WebElement imgElement : imagesList) {
 				if (imgElement != null) {
 					verifyimageActive(imgElement);
@@ -104,23 +104,9 @@ public class UAEnglishCODClass {
 			System.out.println(e.getMessage());
 		}
 
-		try {
-			// english UAE cash on delivery
-
-			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span"))
-					.click();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(3000);
-			int a;
-			int z = 5;
-			for (a = 1; a <= 1; a++) {
-				String view = "//*[@id='category-products-grid']/ol/li[" + a
-						+ "]/div/div[2]/div[3]/div/div/form/button";
-
-				driver.findElement(By.xpath(view)).click();
-			}
-
+		try {			
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span")).click();
+			driver.findElement(By.cssSelector(".action.tocart.primary.show-tooltip")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -167,7 +153,7 @@ public class UAEnglishCODClass {
 					String shippingText = driver
 							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 
-					if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -192,7 +178,7 @@ public class UAEnglishCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -217,7 +203,7 @@ public class UAEnglishCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -241,7 +227,7 @@ public class UAEnglishCODClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -276,15 +262,12 @@ public class UAEnglishCODClass {
 
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
-			driver.findElement(By.xpath("//*[@id='cashondelivery']")).click();
+			driver.findElement(By.xpath("//*[@id='paypal_express']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[1]/div[2]/div[4]/div/button"))
-					.click();
-			String ordernumber = driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div/div[3]/p[1]/a/strong"))
-					.getText();
-			System.out.println("UAE English Cash On delivery order id" + " " + ordernumber);
+
+			// driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[3]/div[2]/div[3]/div/button")).click();
+			System.out.println(" UAE Arabic paypal payment order placed sucessfully");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -319,7 +302,7 @@ public class UAEnglishCODClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = UAEnglishCODClass.getScreenhot(driver, result.getName());
+			String screenshotPath = UAEArabicPaypalClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");
@@ -336,7 +319,7 @@ public class UAEnglishCODClass {
 	public void endReport() {
 		extent.flush();
 		extent.close();
-		driver.quit();
+		//driver.quit();
 	}
 
 }

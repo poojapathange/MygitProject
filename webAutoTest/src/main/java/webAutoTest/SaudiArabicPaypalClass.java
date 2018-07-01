@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -31,7 +31,7 @@ created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Mave
 Target - To verify all sites are up
 */
 
-public class UAEArabicPaypalClass {
+public class SaudiArabicPaypalClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -74,10 +74,10 @@ public class UAEArabicPaypalClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://ar-ae.citrusstv.com");
+		driver.get("https://ar-sa.citrusstv.com/");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = UAEArabicPaypalClass.UAEArabicPaypal(driver);
+		String EnglishMenu = SaudiArabicPaypalClass.SaudiArabicPaypal(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -86,12 +86,12 @@ public class UAEArabicPaypalClass {
 	}
 
 	@Test
-	public static String UAEArabicPaypal(WebDriver driver) throws InterruptedException {
+	public static String SaudiArabicPaypal(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
 			List<WebElement> imagesList = driver.findElements(By.tagName("img"));
-			// System.out.println("Total no. of images are " + imagesList.size());
+			//System.out.println("Total no. of images are " + imagesList.size());
 			for (WebElement imgElement : imagesList) {
 				if (imgElement != null) {
 					verifyimageActive(imgElement);
@@ -104,9 +104,20 @@ public class UAEArabicPaypalClass {
 			System.out.println(e.getMessage());
 		}
 
-		try {			
-			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span")).click();
-			driver.findElement(By.cssSelector(".action.tocart.primary.show-tooltip")).click();
+		try {
+			// english Saudi Paypal
+
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[7]/a/span")).click();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Thread.sleep(3000);
+			int a;
+			int z = 5;
+			for (a = 1; a <= 1; a++) {
+				String view = "//*[@id='category-products-grid']/ol/li[2]/div/div[2]/div[3]/div/div/form/button";
+
+				driver.findElement(By.xpath(view)).click();
+			}
+
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -134,8 +145,9 @@ public class UAEArabicPaypalClass {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
 				// System.out.println("address selected properly" +isPresent);
-
-				if (isPresent == false) {
+				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+				Thread.sleep(3000);
+				if (isPresent == true) {
 					driver.findElement(By.xpath("//*[@id='shipping-method-buttons-container']/div/button")).click();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(5000);
@@ -145,19 +157,17 @@ public class UAEArabicPaypalClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == false) {
+					if (isverified == true) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
 				} else {
-					String shippingText = driver
-							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
-
-					if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
-						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
-								.click();
-						WebElement scrolldown2 = driver
-								.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
+					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
+					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+					Thread.sleep(3000);
+					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button")).click();
+						WebElement scrolldown2 = driver.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
 						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", scrolldown2);
 						Thread.sleep(3000);
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -178,7 +188,7 @@ public class UAEArabicPaypalClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -203,7 +213,7 @@ public class UAEArabicPaypalClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -227,7 +237,7 @@ public class UAEArabicPaypalClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي ")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -259,7 +269,6 @@ public class UAEArabicPaypalClass {
 				e.printStackTrace();
 
 			}
-
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
 			driver.findElement(By.xpath("//*[@id='paypal_express']")).click();
@@ -267,7 +276,8 @@ public class UAEArabicPaypalClass {
 			Thread.sleep(3000);
 
 			// driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[3]/div[2]/div[3]/div/button")).click();
-			System.out.println(" UAE Arabic paypal payment order placed sucessfully");
+			System.out.println(" Saudi Arabic paypal payment order placed sucessfully");
+
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -302,7 +312,7 @@ public class UAEArabicPaypalClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = UAEArabicPaypalClass.getScreenhot(driver, result.getName());
+			String screenshotPath = SaudiArabicPaypalClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");
@@ -319,7 +329,7 @@ public class UAEArabicPaypalClass {
 	public void endReport() {
 		extent.flush();
 		extent.close();
-		//driver.quit();
+		driver.quit();
 	}
 
 }

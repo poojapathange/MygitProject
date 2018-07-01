@@ -1,4 +1,4 @@
-package webAutoTest.CitrussTV;
+package webAutoTest;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
@@ -18,7 +18,6 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
-import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -28,11 +27,11 @@ import com.relevantcodes.extentreports.ExtentTest;
 import com.relevantcodes.extentreports.LogStatus;
 
 /*Author :Pooja ps
-created date :14-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
+created date :12-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven-3.7.0
 Target - To verify all sites are up
 */
 
-public class UAEnglishCreditCardClass {
+public class UAEArabicCreditCardClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
@@ -75,10 +74,10 @@ public class UAEnglishCreditCardClass {
 				"C:\\Users\\PoojaPatange\\Downloads\\workfolder\\chromedrive\\chromedriver.exe");
 		driver = new ChromeDriver();
 		driver.manage().window().maximize();
-		driver.get("https://en-ae.citrusstv.com");
+		driver.get("https://ar-ae.citrusstv.com");
 		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 		Thread.sleep(8000);
-		String EnglishMenu = UAEnglishCreditCardClass.CashOnDeliveryUAE(driver);
+		String EnglishMenu = UAEArabicCreditCardClass.CreditCardArabicUAE(driver);
 		if (EnglishMenu.equals("fail")) {
 			Assert.assertEquals(EnglishMenu, "verifying English Main Stores are up");
 			logger.log(LogStatus.FAIL, "Test Case (failTest) Status is failed");
@@ -87,7 +86,7 @@ public class UAEnglishCreditCardClass {
 	}
 
 	@Test
-	public static String CashOnDeliveryUAE(WebDriver driver) throws InterruptedException {
+	public static String CreditCardArabicUAE(WebDriver driver) throws InterruptedException {
 
 		try {
 			invalidImageCount = 0;
@@ -106,10 +105,10 @@ public class UAEnglishCreditCardClass {
 		}
 
 		try {
-			// english UAE credit card
+			// english UAE cash on delivery
 
 			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[3]/a/span"))
+					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span"))
 					.click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
@@ -121,7 +120,6 @@ public class UAEnglishCreditCardClass {
 
 				driver.findElement(By.xpath(view)).click();
 			}
-
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -168,7 +166,7 @@ public class UAEnglishCreditCardClass {
 					String shippingText = driver
 							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 
-					if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -193,7 +191,7 @@ public class UAEnglishCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -218,7 +216,7 @@ public class UAEnglishCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -242,7 +240,7 @@ public class UAEnglishCreditCardClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -275,29 +273,23 @@ public class UAEnglishCreditCardClass {
 
 			}
 
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(6000);
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc']")).click();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(4000);
-
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_number']")).sendKeys("5424180279791732");
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_holder_name']")).sendKeys("citruss website test");
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration']")).click();
-			driver.findElement(By.xpath(
-					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[1]/div/select/option[12]"))
-					.click();
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration_yr']")).click();
-			driver.findElement(By.xpath(
-					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[2]/div/select/option[9]"))
-					.click();
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_cid']")).sendKeys("123");
-			driver.findElement(
-					By.xpath("//*[@id='checkout-payment-method-load']/div/div[2]/div[2]/div[2]/div/div/button"))
-					.click();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(10000);
-			System.out.println("UAE English credit card payment order placed sucessfully");
+			   driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);   
+		          Thread.sleep(6000);
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc']")).click();
+	        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS); 
+	        Thread.sleep(4000);
+	        
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_number']")).sendKeys("5424180279791732");
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_holder_name']")).sendKeys("citruss website test");
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration']")).click();
+	        driver.findElement(By.xpath("/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[1]/div/select/option[12]")).click();
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration_yr']")).click();
+	        driver.findElement(By.xpath("/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[2]/div/select/option[9]")).click();
+	        driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_cid']")).sendKeys("123");
+	        driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[2]/div[2]/div[2]/div/div/button")).click();
+	        driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);   
+	        Thread.sleep(10000);
+	       System.out.println("UAE Arabic credit card payment order placed sucessfully");
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -332,7 +324,7 @@ public class UAEnglishCreditCardClass {
 			System.out.println(" Main Menu Test Cases have been failed");
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getName());
 			logger.log(LogStatus.FAIL, "Test Case Failed is " + result.getThrowable());
-			String screenshotPath = UAEnglishCreditCardClass.getScreenhot(driver, result.getName());
+			String screenshotPath = UAEArabicCreditCardClass.getScreenhot(driver, result.getName());
 			System.out.println("Taken screenshot");
 			objSendEMail.emailsend(screenshotPath);// send email
 			System.out.println("Sent To Mail ID");

@@ -2,50 +2,50 @@
 <testng-results skipped="0" failed="0" total="2" passed="2">
   <reporter-output>
   </reporter-output>
-  <suite name="Default suite" duration-ms="151108" started-at="2018-06-25T08:13:11Z" finished-at="2018-06-25T08:15:42Z">
+  <suite name="CitrussTvWebautomationTesting" duration-ms="117224" started-at="2018-06-27T11:55:23Z" finished-at="2018-06-27T11:57:21Z">
     <groups>
     </groups>
-    <test name="Default test" duration-ms="151108" started-at="2018-06-25T08:13:11Z" finished-at="2018-06-25T08:15:42Z">
-      <class name="webAutoTest.CitrussTV.UAEArabicPaypalClass">
-        <test-method status="PASS" signature="startReport()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="startReport" is-config="true" duration-ms="345" started-at="2018-06-25T12:13:11Z" finished-at="2018-06-25T12:13:11Z">
+    <test name="testngTest" duration-ms="117224" started-at="2018-06-27T11:55:23Z" finished-at="2018-06-27T11:57:21Z">
+      <class name="webAutoTest.AllStoresareUPArabicClass">
+        <test-method status="PASS" signature="startReport()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="startReport" is-config="true" duration-ms="264" started-at="2018-06-27T15:55:23Z" finished-at="2018-06-27T15:55:24Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- startReport -->
-        <test-method status="PASS" signature="failTest()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="failTest" duration-ms="150303" started-at="2018-06-25T12:13:11Z" finished-at="2018-06-25T12:15:41Z">
+        <test-method status="PASS" signature="failTest()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="failTest" duration-ms="115683" started-at="2018-06-27T15:55:24Z" finished-at="2018-06-27T15:57:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- failTest -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="getResult" is-config="true" duration-ms="7" started-at="2018-06-25T12:15:41Z" finished-at="2018-06-25T12:15:41Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="getResult" is-config="true" duration-ms="3" started-at="2018-06-27T15:57:19Z" finished-at="2018-06-27T15:57:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=failTest status=SUCCESS method=UAEArabicPaypalClass.failTest()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e] output={null}]]]>
+                <![CDATA[[TestResult name=failTest status=SUCCESS method=AllStoresareUPArabicClass.failTest()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="passTest()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="passTest" duration-ms="8" started-at="2018-06-25T12:15:41Z" finished-at="2018-06-25T12:15:41Z">
+        <test-method status="PASS" signature="passTest()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="passTest" duration-ms="3" started-at="2018-06-27T15:57:19Z" finished-at="2018-06-27T15:57:19Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- passTest -->
-        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="getResult" is-config="true" duration-ms="0" started-at="2018-06-25T12:15:41Z" finished-at="2018-06-25T12:15:41Z">
+        <test-method status="PASS" signature="getResult(org.testng.ITestResult)[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="getResult" is-config="true" duration-ms="1" started-at="2018-06-27T15:57:19Z" finished-at="2018-06-27T15:57:19Z">
           <params>
             <param index="0">
               <value>
-                <![CDATA[[TestResult name=passTest status=SUCCESS method=UAEArabicPaypalClass.passTest()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e] output={null}]]]>
+                <![CDATA[[TestResult name=passTest status=SUCCESS method=AllStoresareUPArabicClass.passTest()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d] output={null}]]]>
               </value>
             </param>
           </params>
           <reporter-output>
           </reporter-output>
         </test-method> <!-- getResult -->
-        <test-method status="PASS" signature="endReport()[pri:0, instance:webAutoTest.CitrussTV.UAEArabicPaypalClass@72d1ad2e]" name="endReport" is-config="true" duration-ms="420" started-at="2018-06-25T12:15:41Z" finished-at="2018-06-25T12:15:42Z">
+        <test-method status="PASS" signature="endReport()[pri:0, instance:webAutoTest.AllStoresareUPArabicClass@63753b6d]" name="endReport" is-config="true" duration-ms="1255" started-at="2018-06-27T15:57:19Z" finished-at="2018-06-27T15:57:21Z">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- endReport -->
-      </class> <!-- webAutoTest.CitrussTV.UAEArabicPaypalClass -->
-    </test> <!-- Default test -->
-  </suite> <!-- Default suite -->
+      </class> <!-- webAutoTest.AllStoresareUPArabicClass -->
+    </test> <!-- testngTest -->
+  </suite> <!-- CitrussTvWebautomationTesting -->
 </testng-results>
