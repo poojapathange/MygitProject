@@ -34,7 +34,7 @@ Target - To verify all sites are up
 public class SaudiEnglishPaypalClass {
 	ExtentReports extent;
 	ExtentTest logger;
-	WebDriver driver;
+	WebDriver driver;  
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
 	private static int invalidImageCount;
 

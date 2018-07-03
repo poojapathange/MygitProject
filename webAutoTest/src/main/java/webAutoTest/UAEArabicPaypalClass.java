@@ -38,7 +38,7 @@ public class UAEArabicPaypalClass {
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
 	private static int invalidImageCount;
 
-	@BeforeTest
+	@BeforeTest  
 	public void startReport() {
 		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/STMExtentReport.html", true);
 		extent.addSystemInfo("Host Name", "citruss tv").addSystemInfo("Environment", "Automation Testing")
@@ -105,8 +105,18 @@ public class UAEArabicPaypalClass {
 		}
 
 		try {			
-			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span")).click();
-			driver.findElement(By.cssSelector(".action.tocart.primary.show-tooltip")).click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span")).click();
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			Thread.sleep(3000);
+			/*int a;
+			int z = 5;
+			for (a = 1; a <= 1; a++) {
+				String view = "//*[@id='category-products-grid']/ol/li[" + a
+						+ "]/div/div[2]/div[3]/div/div/form/button";
+
+				driver.findElement(By.xpath(view)).click();
+			}*/
+			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[2]/div/div[2]/div[3]/div/div/form/button")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -150,14 +160,12 @@ public class UAEArabicPaypalClass {
 					}
 
 				} else {
-					String shippingText = driver
-							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
-
-					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
-						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
-								.click();
-						WebElement scrolldown2 = driver
-								.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
+					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
+					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+					Thread.sleep(3000);
+					if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
+						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button")).click();
+						WebElement scrolldown2 = driver.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
 						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", scrolldown2);
 						Thread.sleep(3000);
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -178,7 +186,7 @@ public class UAEArabicPaypalClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -203,7 +211,7 @@ public class UAEArabicPaypalClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -227,7 +235,7 @@ public class UAEArabicPaypalClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -259,7 +267,7 @@ public class UAEArabicPaypalClass {
 				e.printStackTrace();
 
 			}
-
+			
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
 			driver.findElement(By.xpath("//*[@id='paypal_express']")).click();
@@ -319,7 +327,7 @@ public class UAEArabicPaypalClass {
 	public void endReport() {
 		extent.flush();
 		extent.close();
-		//driver.quit();
+		driver.quit();
 	}
 
 }

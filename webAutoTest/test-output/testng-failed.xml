@@ -1,9 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [CitrussTvWebautomationTesting]">
-  <test name="testngTest">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
+  <test verbose="2" name="Default test">
     <classes>
-      <class name="webAutoTest.AllStoresareUPArabicClass"/>
+      <class name="webAutoTest.SaudiArabicCODClass"/>
     </classes>
-  </test> <!-- testngTest -->
-</suite> <!-- Failed suite [CitrussTvWebautomationTesting] -->
+  </test> <!-- Default test -->
+  <test name="Default test(failed)">
+    <classes>
+      <class name="webAutoTest.SaudiArabicCODClass">
+        <methods>
+          <include name="endReport"/>
+          <include name="startReport"/>
+          <include name="failTest"/>
+          <include name="getResult"/>
+        </methods>
+      </class> <!-- webAutoTest.SaudiArabicCODClass -->
+    </classes>
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

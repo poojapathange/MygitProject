@@ -32,8 +32,8 @@ created date :14-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Mave
 Target - To verify all sites are up
 */
 
-public class UAEnglishCreditCardClass {
-	ExtentReports extent;
+public class UAEnglishCreditCardClass {  
+	ExtentReports extent;    
 	ExtentTest logger;
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();

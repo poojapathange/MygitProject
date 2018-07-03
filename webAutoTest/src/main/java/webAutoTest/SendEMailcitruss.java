@@ -16,7 +16,7 @@ public class SendEMailcitruss{
     final String subject = "OOPS Citruss Web Automation Testing Failed";
     public void emailsend(String Filename) 
     {
-   
+     
     	Properties props = new Properties();
     	props.put("mail.smtp.auth", true);
     	props.put("mail.smtp.starttls.enable", true);

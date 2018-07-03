@@ -27,7 +27,7 @@ Target - To verify all sites are up
 */
 
 public class AllStoresareUPArabicClass {
-	ExtentReports extent;
+	ExtentReports extent;  
 	ExtentTest logger;
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();

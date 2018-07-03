@@ -29,7 +29,7 @@ public class MainMenuLinksEnglishClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
-	SendEMailcitruss objSendEMail = new SendEMailcitruss();
+	SendEMailcitruss objSendEMail = new SendEMailcitruss();  
 
 	@BeforeTest
 	public void startReport() {

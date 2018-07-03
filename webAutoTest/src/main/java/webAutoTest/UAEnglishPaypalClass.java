@@ -37,7 +37,7 @@ public class UAEnglishPaypalClass {
 	ExtentTest logger;
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
-	private static int invalidImageCount;
+	private static int invalidImageCount;  
 
 	@BeforeTest
 	public void startReport() {

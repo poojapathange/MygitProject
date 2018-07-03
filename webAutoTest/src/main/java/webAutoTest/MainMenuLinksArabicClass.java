@@ -25,7 +25,7 @@ created date :7-6-18 version:Ecplise Oxygen,Selenium -3.11.0,Testng-6.13.1,Maven
 Target - To verify all sites are up
 */
 
-public class MainMenuLinksArabicClass {
+public class MainMenuLinksArabicClass {  
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;

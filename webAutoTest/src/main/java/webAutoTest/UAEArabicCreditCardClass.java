@@ -37,7 +37,7 @@ public class UAEArabicCreditCardClass {
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
 	private static int invalidImageCount;
-
+  
 	@BeforeTest
 	public void startReport() {
 		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/STMExtentReport.html", true);
@@ -107,19 +107,18 @@ public class UAEArabicCreditCardClass {
 		try {
 			// english UAE cash on delivery
 
-			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span"))
-					.click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[6]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			int a;
+			/*int a;
 			int z = 5;
 			for (a = 1; a <= 1; a++) {
 				String view = "//*[@id='category-products-grid']/ol/li[" + a
 						+ "]/div/div[2]/div[3]/div/div/form/button";
 
 				driver.findElement(By.xpath(view)).click();
-			}
+			}*/
+			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[2]/div/div[2]/div[3]/div/div/form/button")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -146,7 +145,7 @@ public class UAEArabicCreditCardClass {
 			try {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
-				// System.out.println("address selected properly" +isPresent);
+				 System.out.println("address selected properly" +isPresent);
 
 				if (isPresent == false) {
 					driver.findElement(By.xpath("//*[@id='shipping-method-buttons-container']/div/button")).click();
@@ -156,7 +155,7 @@ public class UAEArabicCreditCardClass {
 					Boolean isverified = driver
 							.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span"))
 							.size() < 0;
-					// System.out.println("SMS " +isverified);
+					System.out.println("SMS " +isverified);
 
 					if (isverified == false) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
@@ -166,7 +165,7 @@ public class UAEArabicCreditCardClass {
 					String shippingText = driver
 							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 
-					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -181,7 +180,7 @@ public class UAEArabicCreditCardClass {
 						Boolean phoneverify = driver
 								.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span"))
 								.size() < 0;
-						// System.out.println("SMS " + phoneverify);
+						 System.out.println("SMS " + phoneverify);
 
 						if (phoneverify == false) {
 							driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span"))
@@ -191,7 +190,7 @@ public class UAEArabicCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -216,7 +215,7 @@ public class UAEArabicCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -240,7 +239,7 @@ public class UAEArabicCreditCardClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver

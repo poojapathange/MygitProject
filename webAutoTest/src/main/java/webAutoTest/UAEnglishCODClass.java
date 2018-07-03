@@ -33,7 +33,7 @@ Target - To verify all sites are up
 
 public class UAEnglishCODClass {
 	ExtentReports extent;
-	ExtentTest logger;
+	ExtentTest logger;  
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
 	private static int invalidImageCount;
@@ -312,7 +312,7 @@ public class UAEnglishCODClass {
 	 * @Test public void skipTest(){ logger = extent.startTest("skipTest"); throw
 	 * new SkipException("Skipping - This is not ready for testing "); }
 	 */
-
+  
 	@AfterMethod
 	public void getResult(ITestResult result) throws Exception {
 		if (result.getStatus() == ITestResult.FAILURE) {

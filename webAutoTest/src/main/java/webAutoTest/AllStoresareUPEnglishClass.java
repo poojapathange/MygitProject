@@ -30,7 +30,7 @@ public class AllStoresareUPEnglishClass {
 	ExtentTest logger;
 	WebDriver driver;
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
-
+  
 	@BeforeTest
 	public void startReport() {
 		extent = new ExtentReports(System.getProperty("user.dir") + "/test-output/STMExtentReport.html", true);

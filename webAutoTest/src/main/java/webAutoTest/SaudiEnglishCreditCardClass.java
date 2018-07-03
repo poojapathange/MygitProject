@@ -35,7 +35,7 @@ public class SaudiEnglishCreditCardClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
-	SendEMailcitruss objSendEMail = new SendEMailcitruss();
+	SendEMailcitruss objSendEMail = new SendEMailcitruss();   
 	private static int invalidImageCount;
 
 	@BeforeTest

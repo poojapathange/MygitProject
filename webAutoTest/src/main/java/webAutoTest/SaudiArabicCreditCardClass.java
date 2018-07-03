@@ -35,7 +35,7 @@ public class SaudiArabicCreditCardClass {
 	ExtentReports extent;
 	ExtentTest logger;
 	WebDriver driver;
-	SendEMailcitruss objSendEMail = new SendEMailcitruss();
+	SendEMailcitruss objSendEMail = new SendEMailcitruss();  
 	private static int invalidImageCount;
 
 	@BeforeTest
@@ -53,8 +53,7 @@ public class SaudiArabicCreditCardClass {
 		String dateName = new SimpleDateFormat("dd-MM-yyyy HH-mm-ss").format(new Date());
 		TakesScreenshot ts = (TakesScreenshot) driver;
 		File source = ts.getScreenshotAs(OutputType.FILE);
-		String destination = System.getProperty("user.dir") + "/FailedTestsScreenshots/" + screenshotName + dateName
-				+ ".png";
+		String destination = System.getProperty("user.dir") + "/FailedTestsScreenshots/" + screenshotName + dateName+ ".png";
 		File finalDestination = new File(destination);
 		FileUtils.copyFile(source, finalDestination);
 		return destination;
@@ -144,7 +143,7 @@ public class SaudiArabicCreditCardClass {
 			try {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
-				// System.out.println("address selected properly" +isPresent);
+				System.out.println("address selected properly" +isPresent);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				Thread.sleep(3000);
 				if (isPresent == true) {
@@ -165,7 +164,7 @@ public class SaudiArabicCreditCardClass {
 					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(3000);
-					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button")).click();
 						WebElement scrolldown2 = driver.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
 						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", scrolldown2);
@@ -188,7 +187,7 @@ public class SaudiArabicCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -213,7 +212,7 @@ public class SaudiArabicCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -237,7 +236,7 @@ public class SaudiArabicCreditCardClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver

@@ -34,7 +34,7 @@ Target - To verify all sites are up
 public class SaudiArabicCODClass {
 	ExtentReports extent;
 	ExtentTest logger;
-	WebDriver driver;
+	WebDriver driver;  
 	SendEMailcitruss objSendEMail = new SendEMailcitruss();
 	private static int invalidImageCount;
 
@@ -107,20 +107,18 @@ public class SaudiArabicCODClass {
 		try {
 			// English Saudi cash on delivery
 
-			driver.findElement(By.xpath(
-					"/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span"))
-					.click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[4]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
-			int a;
+			driver.findElement(By.xpath("//*[@id='category-products-grid']/ol/li[2]/div/div[2]/div[3]/div/div/form/button")).click();
+			/*int a;
 			int z = 5;
 			for (a = 1; a <= 1; a++) {
-				String view = "//*[@id='category-products-grid']/ol/li[" + a
-						+ "]/div/div[2]/div[3]/div/div/form/button";
+				String view = "//*[@id='category-products-grid']/ol/li[" + a+ "]/div/div[2]/div[3]/div/div/form/button";
 
 				driver.findElement(By.xpath(view)).click();
 			}
-
+*/
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			driver.findElement(By.xpath("html/body/div[3]/header/div[2]/div[1]/div/div[3]/div/div[1]/a/span[3]"))
@@ -168,7 +166,7 @@ public class SaudiArabicCODClass {
 					String shippingText = driver.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(3000);
-					if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button")).click();
 						WebElement scrolldown2 = driver.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
 						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", scrolldown2);
@@ -191,7 +189,7 @@ public class SaudiArabicCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[2]/button"))
 								.click();
 						WebElement scrolldown2 = driver
@@ -216,7 +214,7 @@ public class SaudiArabicCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown3 = driver
@@ -240,7 +238,7 @@ public class SaudiArabicCODClass {
 
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
-					} else if (shippingText.equals("ع�?واً, لا تتوا�?ر أسعار لهذا الطلب �?ي الوقت الحالي ")) {
+					} else if (shippingText.equals("عفواً, لا تتوافر أسعار لهذا الطلب في الوقت الحالي")) {
 						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[3]/button"))
 								.click();
 						WebElement scrolldown = driver
@@ -272,6 +270,7 @@ public class SaudiArabicCODClass {
 				e.printStackTrace();
 
 			}
+			
 
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(6000);
