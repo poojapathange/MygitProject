@@ -18,8 +18,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -67,7 +69,7 @@ public class SaudiArabicCODClass {
 		logger.log(LogStatus.PASS, "Test Case Passed is passTest");
 	}
 
-	@Test
+	@BeforeClass
 	public void failTest() throws InterruptedException {
 		logger = extent.startTest("failTest");
 		System.setProperty("webdriver.chrome.driver",
@@ -143,7 +145,6 @@ public class SaudiArabicCODClass {
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 
 			try {
-
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
 				// System.out.println("address selected properly" +isPresent);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -158,7 +159,7 @@ public class SaudiArabicCODClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == true) {
+					if (isverified == false) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
@@ -176,9 +177,7 @@ public class SaudiArabicCODClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-						Boolean phoneverify = driver
-								.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span"))
-								.size() < 0;
+						Boolean phoneverify = driver.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).size() < 0;
 						// System.out.println("SMS " + phoneverify);
 
 						if (phoneverify == false) {
@@ -272,8 +271,6 @@ public class SaudiArabicCODClass {
 			}
 			
 
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(6000);
 			driver.findElement(By.xpath("//*[@id='cashondelivery']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
@@ -303,12 +300,15 @@ public class SaudiArabicCODClass {
 			if (response.getStatusLine().getStatusCode() != 200)
 				invalidImageCount++;
 		} catch (Exception e) {
+			System.out.println(e);
 			e.printStackTrace();
+			
 		}
 	}
 	/*
 	 * @Test public void skipTest(){ logger = extent.startTest("skipTest"); throw
 	 * new SkipException("Skipping - This is not ready for testing "); }
+	 * 
 	 */
 
 	@AfterMethod
@@ -334,7 +334,13 @@ public class SaudiArabicCODClass {
 	public void endReport() {
 		extent.flush();
 		extent.close();
+		//driver.quit();
+	}
+	
+	@AfterClass
+	public void exitmethos() {
 		driver.quit();
+		driver.close();
 	}
 
 }

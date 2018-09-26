@@ -140,7 +140,7 @@ public class UAEnglishPaypalClass {
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
 				// System.out.println("address selected properly" +isPresent);
 
-				if (isPresent == false) {
+				if (isPresent == true) {
 					driver.findElement(By.xpath("//*[@id='shipping-method-buttons-container']/div/button")).click();
 					driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 					Thread.sleep(5000);
@@ -150,7 +150,7 @@ public class UAEnglishPaypalClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == false) {
+					if (isverified == true) {
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
@@ -159,10 +159,8 @@ public class UAEnglishPaypalClass {
 							.findElement(By.xpath("//*[@id='checkout-step-shipping_method']/div/span")).getText();
 
 					if (shippingText.equals("Sorry, no quotes are available for this order at this time")) {
-						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button"))
-								.click();
-						WebElement scrolldown2 = driver
-								.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
+						driver.findElement(By.xpath("//*[@id='checkout-step-shipping']/div[1]/div/div/div[1]/button")).click();
+						WebElement scrolldown2 = driver.findElement(By.xpath("//*[@id='opc-shipping_method']/div/div[1]"));
 						((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", scrolldown2);
 						Thread.sleep(3000);
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
@@ -273,7 +271,6 @@ public class UAEnglishPaypalClass {
 
 			// driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[3]/div[2]/div[3]/div/button")).click();
 			System.out.println(" UAE English paypal payment order placed sucessfully");
-
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println(e);

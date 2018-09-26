@@ -1,0 +1,23 @@
+<suite name="CitrussTvWebautomationTesting">
+	<test name="testngTest">
+		<classes>
+			<class name="webAutoTest.AllStoresareUPArabicClass" />
+			<class name="webAutoTest.AllStoresareUPEnglishClass" />
+			<class name="webAutoTest.MainMenuLinksArabicClass" />
+			<class name="webAutoTest.MainMenuLinksEnglishClass" />
+			<class name="webAutoTest.SaudiArabicCODClass" />
+			<class name="webAutoTest.SaudiArabicCreditCardClass" />
+			<class name="webAutoTest.SaudiArabicPaypalClass" />
+			<class name="webAutoTest.SAudiEnglishCODClass" />
+			<class name="webAutoTest.SaudiEnglishCreditCardClass" />
+			<class name="webAutoTest.SaudiEnglishPaypalClass" />
+			<class name="webAutoTest.UAEArabicCODClass" />
+			<class name="webAutoTest.UAEArabicCreditCardClass" />
+			<class name="webAutoTest.UAEArabicPaypalClass" />
+			<class name="webAutoTest.UAEnglishCODClass" />
+			<class name="webAutoTest.UAEnglishCreditCardClass" />
+			<class name="webAutoTest.UAEnglishPaypalClass" />
+			
+		</classes>
+	</test>
+</suite>

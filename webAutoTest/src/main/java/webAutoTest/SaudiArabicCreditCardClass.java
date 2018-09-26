@@ -18,8 +18,10 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.Assert;
 import org.testng.ITestResult;
+import org.testng.annotations.AfterClass;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import com.relevantcodes.extentreports.ExtentReports;
@@ -66,7 +68,7 @@ public class SaudiArabicCreditCardClass {
 		logger.log(LogStatus.PASS, "Test Case Passed is passTest");
 	}
 
-	@Test
+	@BeforeClass
 	public void failTest() throws InterruptedException {
 		logger = extent.startTest("failTest");
 		System.setProperty("webdriver.chrome.driver",
@@ -106,7 +108,7 @@ public class SaudiArabicCreditCardClass {
 		try {
 			// English Saudi cash on delivery
 
-			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[7]/a/span")).click();
+			driver.findElement(By.xpath("/html/body/div[3]/header/div[2]/div[2]/div[1]/div/div/div/div[2]/div/div/div/ul/li[1]/a/span")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 			Thread.sleep(3000);
 			//int a;
@@ -143,7 +145,7 @@ public class SaudiArabicCreditCardClass {
 			try {
 
 				Boolean isPresent = driver.findElements(By.cssSelector(".button.action.continue.primary")).size() < 0;
-				System.out.println("address selected properly" +isPresent);
+				// System.out.println("address selected properly" +isPresent);
 				driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 				Thread.sleep(3000);
 				if (isPresent == true) {
@@ -156,7 +158,8 @@ public class SaudiArabicCreditCardClass {
 							.size() < 0;
 					// System.out.println("SMS " +isverified);
 
-					if (isverified == true) {
+					if (isverified == false) { 
+						
 						driver.findElement(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).click();
 					}
 
@@ -174,9 +177,7 @@ public class SaudiArabicCreditCardClass {
 						driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
 						Thread.sleep(6000);
 
-						Boolean phoneverify = driver
-								.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span"))
-								.size() < 0;
+						Boolean phoneverify = driver.findElements(By.xpath("//*[@id='ctv-sms-form-step-1']/div/div[2]/div[2]/a/span")).size() < 0;
 						// System.out.println("SMS " + phoneverify);
 
 						if (phoneverify == false) {
@@ -269,30 +270,16 @@ public class SaudiArabicCreditCardClass {
 
 			}
 			
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(6000);
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc']")).click();
-			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(4000);
 
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_number']")).sendKeys("5424180279791732");
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_holder_name']")).sendKeys("citruss website test");
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration']")).click();
-			driver.findElement(By.xpath(
-					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[1]/div/select/option[12]"))
-					.click();
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_expiration_yr']")).click();
-			driver.findElement(By.xpath(
-					"/html/body/div[4]/main/div[2]/div/div[3]/div[4]/ol/li[3]/div[2]/form/fieldset/div[1]/div/div[2]/div[2]/form/fieldset/div[4]/div/div/div[2]/div/select/option[9]"))
-					.click();
-			driver.findElement(By.xpath("//*[@id='payfort_fort_cc_cc_cid']")).sendKeys("123");
-			driver.findElement(
-					By.xpath("//*[@id='checkout-payment-method-load']/div/div[2]/div[2]/div[2]/div/div/button"))
-					.click();
+			driver.findElement(By.xpath("//*[@id='cashondelivery']")).click();
 			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
-			Thread.sleep(10000);
-			System.out.println("UAE English credit card payment order placed sucessfully");
-		
+			Thread.sleep(3000);
+			driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+			driver.findElement(By.xpath("//*[@id='checkout-payment-method-load']/div/div[1]/div[2]/div[4]/div/button"))
+					.click();
+			String ordernumber = driver.findElement(By.xpath("//*[@id='maincontent']/div[3]/div/div[3]/p[1]/a/strong"))
+					.getText();
+			System.out.println("Saudi Arabic Cash On delivery order id" + " " + ordernumber);
 
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -302,6 +289,7 @@ public class SaudiArabicCreditCardClass {
 		}
 		return "sucess";
 	}
+
 
 	public static void verifyimageActive(WebElement imgElement) {
 		try {
@@ -347,4 +335,9 @@ public class SaudiArabicCreditCardClass {
 		driver.quit();
 	}
 
+	@AfterClass
+	public void exitmethos() {
+		driver.quit();
+		driver.close();
+	}
 }
